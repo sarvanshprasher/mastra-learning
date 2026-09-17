@@ -1,0 +1,1 @@
+Rewrite text clearly and concisely.

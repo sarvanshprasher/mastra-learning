@@ -8,14 +8,17 @@ import {
   Observability,
   SensitiveDataFilter,
 } from '@mastra/observability';
-import { agent } from './agents/agent';
+import { WeatherAgent } from './agents/weather-agent';
 import { startScheduleTool, stopScheduleTool } from './tools/schedule-tools';
+import { agent } from './agents/agent';
+import {testWorkflow} from './workflows/test-workflow'
 
 export const mastra = new Mastra({
   bundler: {
     externals: ['@duckdb/node-bindings'],
   },
-  agents: { agent },
+  agents: { WeatherAgent },
+  workflows: { testWorkflow },
   tools: { startScheduleTool, stopScheduleTool },
   storage: new MastraCompositeStore({
     id: 'composite-storage',
